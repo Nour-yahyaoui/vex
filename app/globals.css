@@ -1,0 +1,110 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --accent: #39ff88;
+  --accent-dim: #1f8a4c;
+  --accent-soft: rgba(57, 255, 136, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+::selection {
+  background: var(--accent-soft);
+  color: var(--accent);
+}
+
+/* thin phosphor-tinted scrollbars everywhere in the OS */
+.vex-scroll::-webkit-scrollbar {
+  width: 9px;
+  height: 9px;
+}
+.vex-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.02);
+}
+.vex-scroll::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+}
+.vex-scroll::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-dim);
+}
+
+.vex-accent {
+  color: var(--accent);
+}
+.vex-accent-bg {
+  background-color: var(--accent);
+}
+.vex-accent-border {
+  border-color: var(--accent);
+}
+.vex-accent-glow {
+  text-shadow: 0 0 10px var(--accent-soft), 0 0 2px var(--accent-soft);
+}
+
+/* CRT scanline overlay used on the desktop + terminal surfaces */
+.crt-scanlines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.018) 0px,
+    rgba(255, 255, 255, 0.018) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+  mix-blend-mode: overlay;
+}
+
+.crt-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  box-shadow: inset 0 0 140px rgba(0, 0, 0, 0.7);
+}
+
+.circuit-bg {
+  background-color: #05070a;
+  background-image: radial-gradient(circle at 15% 20%, rgba(57, 255, 136, 0.05), transparent 45%),
+    radial-gradient(circle at 85% 80%, rgba(90, 212, 255, 0.05), transparent 45%),
+    linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px);
+  background-size: auto, auto, 42px 42px, 42px 42px;
+}
+
+.terminal-caret {
+  animation: caret-blink 1s step-end infinite;
+}
+@keyframes caret-blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+.boot-line {
+  animation: bootIn 0.18s ease-out both;
+}
+
+@media (max-width: 768px) {
+  .vex-window-mobile {
+    left: 2vw !important;
+    top: 2vh !important;
+    width: 96vw !important;
+    height: 80vh !important;
+  }
+}
