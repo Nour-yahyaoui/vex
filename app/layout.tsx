@@ -32,7 +32,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           rel="stylesheet"
         />
       </head>
-      <body className="bg-vex-bg text-vex-text font-mono antialiased overflow-hidden">
+      <body className="bg-vex-bg text-vex-text font-mono antialiased ">
         <Providers>{children}</Providers>
       </body>
     </html>
